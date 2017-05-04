@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using Models;
 namespace Factory
 {
-    public class ConcreteCreatorRegular : Creator
+    public class ConcreteCreatorTxt : Creator
     {
         public override RegistrationModel FactoryMethod(IList<Registration> reg)
-        {
-            return new RegularReg(reg);
+        {   TxtReg tr =  new TxtReg();
+            tr.write(reg);
+            return tr;
         }
     }
 }

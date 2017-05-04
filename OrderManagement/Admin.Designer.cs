@@ -49,9 +49,12 @@
             this.date2 = new System.Windows.Forms.DateTimePicker();
             this.adminBox = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.xml = new System.Windows.Forms.CheckBox();
+            this.txt = new System.Windows.Forms.CheckBox();
             this.idRegistration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -231,11 +234,32 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idRegistration,
             this.Username,
-            this.Date});
+            this.Date,
+            this.cc});
             this.dataGridView1.Location = new System.Drawing.Point(406, 225);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(446, 131);
             this.dataGridView1.TabIndex = 18;
+            // 
+            // xml
+            // 
+            this.xml.AutoSize = true;
+            this.xml.Location = new System.Drawing.Point(205, 326);
+            this.xml.Name = "xml";
+            this.xml.Size = new System.Drawing.Size(48, 17);
+            this.xml.TabIndex = 19;
+            this.xml.Text = "XML";
+            this.xml.UseVisualStyleBackColor = true;
+            // 
+            // txt
+            // 
+            this.txt.AutoSize = true;
+            this.txt.Location = new System.Drawing.Point(279, 326);
+            this.txt.Name = "txt";
+            this.txt.Size = new System.Drawing.Size(47, 17);
+            this.txt.TabIndex = 20;
+            this.txt.Text = "TXT";
+            this.txt.UseVisualStyleBackColor = true;
             // 
             // idRegistration
             // 
@@ -255,11 +279,19 @@
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
             // 
+            // cc
+            // 
+            this.cc.DataPropertyName = "type";
+            this.cc.HeaderText = "Type";
+            this.cc.Name = "cc";
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 371);
+            this.Controls.Add(this.txt);
+            this.Controls.Add(this.xml);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.adminBox);
             this.Controls.Add(this.date2);
@@ -309,8 +341,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn pass;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox xml;
+        private System.Windows.Forms.CheckBox txt;
         private System.Windows.Forms.DataGridViewTextBoxColumn idRegistration;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cc;
     }
 }

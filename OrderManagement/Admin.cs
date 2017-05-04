@@ -94,16 +94,13 @@ namespace OrderManagement
             UserOperations up = new UserOperations();
             dataGridView1.DataSource = up.generateDet(data1,data2,username);
 
-            User x = new User();
-            x = up.getUser(username);
-
             Creator[] creators = new Creator[2];
-            creators[0] = new ConcreteCreatorAdmin();
-            creators[1] = new ConcreteCreatorRegular();
+            creators[0] = new ConcreteCreatorXML();
+            creators[1] = new ConcreteCreatorTxt();
             RegistrationModel reg;
-            if(x.IsAdmin)
+            if(xml.Checked)
                  reg= creators[0].FactoryMethod(up.generateDet(data1, data2, username));
-            else
+            else if (txt.Checked)
                 reg = creators[1].FactoryMethod(up.generateDet(data1, data2, username));
 
         }

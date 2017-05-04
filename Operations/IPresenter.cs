@@ -19,7 +19,6 @@ namespace Operations
         User Login(string userName, string password);
         void AddUser(User user);
         void DeleteUser(User user);
-        void addReg(Registration reg);
         void UpdateUser(User user);
         IList<Registration> generateDet(DateTime d1, DateTime d2, string username);
         User getUser(string username);

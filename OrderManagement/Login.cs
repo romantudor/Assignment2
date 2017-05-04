@@ -13,6 +13,7 @@ namespace OrderManagement
 {
     public partial class Login : Form
     {
+        public string username;
         public Login()
         {
             InitializeComponent();
@@ -31,11 +32,12 @@ namespace OrderManagement
             us.password = "admin";
             bl.AddUser(us);
             */
+            username = txtUser.Text;
             User user = bl.Login(txtUser.Text, txtPassword.Text);
             Registration regg = new Registration();
             regg.loginDate = DateTime.Now;
             regg.username = txtUser.Text;
-            bl.addReg(regg);
+
             if (user.IsAdmin)
             {
                 Admin adminForm = new Admin();
@@ -43,7 +45,7 @@ namespace OrderManagement
             }
             else
             {
-                regular reg = new regular();
+                regular reg = new regular(username);
                 reg.Show();
             }
         }

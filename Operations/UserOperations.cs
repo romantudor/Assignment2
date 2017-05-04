@@ -39,11 +39,7 @@ namespace Operations
             DataAccess dal = new DataAccess();
             dal.DeleteUser(user);
         }
-        public void addReg(Registration reg)
-        {
-            DataAccess dal = new DataAccess();
-            dal.addReg(reg);
-        }
+        
         public void UpdateUser(User user)
         {
             Security secure = new Security();

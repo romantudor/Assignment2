@@ -11,13 +11,20 @@ namespace DA
 {
     public class DataAccess
     {
+        public string username;
         private string connString;
 
+        public DataAccess(string name)
+        {
+            this.username = name;
+            connString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
+
+        }
         public DataAccess()
         {
             connString = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
-        }
 
+        }
         public User GetUser(string userName)
         {
 
@@ -62,23 +69,24 @@ namespace DA
                     cmd.ExecuteNonQuery();
                 }
             }
-        public void addReg(Registration reg )
+            public void addActivity(string name, string act)
             {
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
                     conn.Open();
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO registration(idregistration,time,username) VALUES(@id,@time,@name)";
+                    cmd.CommandText = "INSERT INTO activity(name,type, date) VALUES(@name,@type, @date)";
                     cmd.Prepare();
 
-                    cmd.Parameters.AddWithValue("@name", reg.username);
-                    cmd.Parameters.AddWithValue("@id", reg.id);
-                    cmd.Parameters.AddWithValue("@time", reg.loginDate);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@type",act );
+                    cmd.Parameters.AddWithValue("@date", DateTime.Now);
 
                     cmd.ExecuteNonQuery();
                 }
             }
+       
         public IList<User> RetrieveUsers()
             {
             IList<User> userList = new List<User>();
@@ -386,18 +394,18 @@ namespace DA
             else
                 return false;
         }
-        public IList<Registration> generate(DateTime d1, DateTime d2,string name)
+        public IList<Registration> generate(DateTime d1, DateTime d2,string username)
         {
             IList<Registration> raports = new List<Registration>();
             using (MySqlConnection conn = new MySqlConnection(connString))
             {
                 conn.Open();
-                string statement = "SELECT * FROM as1.registration where time>=@d1 and time<=@d2 and username = @name";
+                string statement = "SELECT * FROM as1.activity where date>=@d1 and date<=@d2 ";
 
                 MySqlCommand cmd = new MySqlCommand(statement, conn);
                 cmd.Parameters.AddWithValue("@d1", d1);
                 cmd.Parameters.AddWithValue("@d2", d2);
-                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@username", username);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -405,10 +413,12 @@ namespace DA
                     while (reader.Read())
                     {
                         Registration reg = new Registration();
-                        reg.id = reader.GetInt32("idregistration");
-                        reg.username = reader.GetString("username");
-                        reg.loginDate = reader.GetDateTime("time");
+                        reg.id = reader.GetInt32("idactivity");
+                        reg.username = reader.GetString("name");
+                        reg.type = reader.GetString("type");
+                        reg.loginDate = reader.GetDateTime("date");
                         raports.Add(reg);
+                        Console.WriteLine(reg.id + " "+reg.username+"\n");
                        
                     }
                 }

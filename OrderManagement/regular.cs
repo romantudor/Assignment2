@@ -12,14 +12,16 @@ namespace OrderManagement
 {
     public partial class regular : Form
     {
-        public regular()
+        public string username;
+        public regular(string user)
         {
             InitializeComponent();
+            this.username = user;
         }
        
         private void addBtn_Click(object sender, EventArgs e)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             Product prod = new Product();
             prod = retrieve();
             po.addProduct(prod);
@@ -46,13 +48,13 @@ namespace OrderManagement
 
         private void viewBtn_Click(object sender, EventArgs e)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             dataGridView1.DataSource = po.view();
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             Product prod = new Product();
             prod = retrieve();
             po.updateProduct(prod);
@@ -60,7 +62,7 @@ namespace OrderManagement
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             Product prod = new Product();
             prod = retrieve();
             po.deleteProduct(prod);
@@ -79,7 +81,7 @@ namespace OrderManagement
 
         private void addoBtn_Click(object sender, EventArgs e)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             Order ord = new Order();
             ord = retrieveOrder();
             po.addOrder(ord);
@@ -88,7 +90,7 @@ namespace OrderManagement
 
         private void updateoBtn_Click(object sender, EventArgs e)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             Order ord = new Order();
             ord = retrieveOrder();
             po.updateOrder(ord);
@@ -96,19 +98,19 @@ namespace OrderManagement
 
         private void viewoBtn_Click(object sender, EventArgs e)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             dataGridView2.DataSource = po.viewOrders();
 
         }
         
         public Product getProduct(int id)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             return po.getProduct(id);
         }
         private Order getOrder(int id)
         {
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
             return po.getOrder(id);
         }
 
@@ -139,7 +141,7 @@ namespace OrderManagement
             ordd.quantity = quantity;
             ordd.price = ordd.quantity * prod.price;
 
-            ProductOrderOperations po = new ProductOrderOperations();
+            ProductOrderOperations po = new ProductOrderOperations(username);
            bool t= po.addProdOrder(ord, prod,ordd);
            if (t == false)
                lbl.Text = "Quantity too big!";

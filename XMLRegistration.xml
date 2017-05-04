@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Employees>
+  <Registration ID="2">
+    <Username>regular</Username>
+    <Activity>addProduct</Activity>
+    <LoginDate>2017-05-02T13:14:58</LoginDate>
+  </Registration>
+  <Registration ID="3">
+    <Username>regular</Username>
+    <Activity>updateProduct</Activity>
+    <LoginDate>2017-05-02T13:15:31</LoginDate>
+  </Registration>
+  <Registration ID="4">
+    <Username>regular</Username>
+    <Activity>addProduct</Activity>
+    <LoginDate>2017-05-02T13:18:02</LoginDate>
+  </Registration>
+  <Registration ID="5">
+    <Username>regular</Username>
+    <Activity>updateProduct</Activity>
+    <LoginDate>2017-05-02T13:18:06</LoginDate>
+  </Registration>
+  <Registration ID="6">
+    <Username>regular</Username>
+    <Activity>deleteProduct</Activity>
+    <LoginDate>2017-05-02T13:18:10</LoginDate>
+  </Registration>
+  <Registration ID="7">
+    <Username>regular</Username>
+    <Activity>viewOrders</Activity>
+    <LoginDate>2017-05-02T13:18:18</LoginDate>
+  </Registration>
+  <Registration ID="8">
+    <Username>regular</Username>
+    <Activity>addOrder</Activity>
+    <LoginDate>2017-05-02T13:18:48</LoginDate>
+  </Registration>
+  <Registration ID="9">
+    <Username>regular</Username>
+    <Activity>updateOrder</Activity>
+    <LoginDate>2017-05-02T13:18:50</LoginDate>
+  </Registration>
+  <Registration ID="10">
+    <Username>regular</Username>
+    <Activity>viewOrders</Activity>
+    <LoginDate>2017-05-02T13:18:52</LoginDate>
+  </Registration>
+  <Registration ID="11">
+    <Username>regular</Username>
+    <Activity>addProduct to Order</Activity>
+    <LoginDate>2017-05-02T13:18:53</LoginDate>
+  </Registration>
+</Employees>
